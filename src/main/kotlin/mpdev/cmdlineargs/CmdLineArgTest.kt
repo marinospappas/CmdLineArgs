@@ -23,7 +23,8 @@ fun processCmdLineArgs1(args: Array<String>) {
                         outfile = next.value
                     else {
                         err.println("option -o requires output_file_name")
-                        err.println("invalid option: [-${next.value}] ignored")
+                        if (next.code != ArgCode.endOfList)
+                            err.println("invalid option: [-${next.value}] ignored")
                     }
                 }
                 "h", "H", "help", "?" -> {
